@@ -5,6 +5,17 @@
 #include <unistd.h>
 #include "remote_bitbang.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+  extern int jtag_tick(int port, unsigned char *jtag_TCK, unsigned char *jtag_TMS,
+		       unsigned char *jtag_TDI, unsigned char *jtag_TRSTn,
+		       unsigned char jtag_TDO);
+#ifdef __cplusplus
+}
+#endif
+
 int init = 0;
 
 int jtag_tick(int port, unsigned char *jtag_TCK, unsigned char *jtag_TMS,
