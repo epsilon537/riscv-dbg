@@ -63,7 +63,7 @@ module SimJTAG #(
    always @(posedge clock) begin
       r_reset <= reset;
       if (reset || r_reset) begin
-         __exit = 0;
+         __exit <= 0;
          tickCounterReg <= TICK_DELAY;
          init_done_sticky <= 1'b0;
       end else begin
@@ -71,7 +71,7 @@ module SimJTAG #(
          if (enable && init_done_sticky) begin
             tickCounterReg <= tickCounterNxt;
             if (tickCounterReg == 0) begin
-               __exit = jtag_tick(PORT,
+               __exit <= jtag_tick(PORT,
                                   __jtag_TCK,
                                   __jtag_TMS,
                                   __jtag_TDI,
